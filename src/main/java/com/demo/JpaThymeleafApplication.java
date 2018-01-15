@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-
+/*入口类*/
 @SpringBootApplication
 public class JpaThymeleafApplication extends SpringBootServletInitializer {
 
