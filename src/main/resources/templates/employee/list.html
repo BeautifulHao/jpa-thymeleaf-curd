@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>userList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+    <style>
+        .redBg{
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body class="container">
+<br/>
+<h1>用户列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>employee Name</th>
+            <th>Password</th>
+            <th>Age</th>
+            <th>Remark</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Line</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="employee,iterStat: ${employees}" th:attr="Class=${iterStat.even}?'redBg':''">
+            <th scope="row" th:text="${employee.id}">1</th>
+            <td th:text="${employee.employeeName}">neo</td>
+            <td th:text="${employee.password}">Otto</td>
+            <td th:text="${employee.age}">6</td>
+            <td th:text="${employee.remark}">remark</td>
+            <td><a th:href="@{/toEdit(id=${employee.id})}">edit</a></td>
+            <td><a th:href="@{/delete(id=${employee.id},age=${employee.age})}">delete</a></td>
+            <td th:text="${iterStat.index} ">index</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/toAdd" th:href="@{/toAdd}" th:width="100" class="btn btn-info">新增</a>
+    </div>
+</div>
+
+
+<span th:text="|人员总计, ${employees.size()}|" th:if="${employees.size()>0}"></span>
+<span th:text="|人员总计, ${employees.size()}|" th:unless="${employees.size()>0}"></span>
+<span th:text="${#dates.createNow()}"></span>
+
+</body>
+</html>
